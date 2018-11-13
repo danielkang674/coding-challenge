@@ -1,2 +1,23 @@
 <!-- View for creating a new `Post` -->
 <!-- See http://guides.rubyonrails.org/form_helpers.html#dealing-with-basic-forms for more information -->
+
+<h1>Make a New Post</h1>
+<!-- Create method of post controller -->
+<%= form_tag :action => 'create' do %>
+  <p>
+    <label for="post_title">Title:</label>
+    <!-- `post` hash with key title -->
+    <%= text_field 'post', 'title' %>
+  </p>
+  <p>
+    <label for="post_body">Body:</label>
+    <!-- `post` hash with key body -->
+    <%= text_area 'post', 'body' %>
+  </p>
+  <%= submit_tag "Create Post" %>
+<% end -%>
+<br />
+<%= link_to 'Back', {:action => 'index'} %>
+
+
+

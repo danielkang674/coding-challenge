@@ -1,0 +1,22 @@
+<!-- check for comments -->
+<% if @post.comments.blank? %>
+  <h3>There are no comments to show.</h3>
+  <h4>You should write some!</h4>
+<% else %>
+  <ul id="comments-list">
+  <!-- iterate over comments -->
+    <% @post.comments.each do |comment| %>
+    <li>
+      <%= comment.body %>
+      <!-- Edit comment view and sending comment id in params -->
+      <%= link_to 'Edit', {:action => 'edit', :controller => 'comment', :id => comment.id} %>
+      <!-- Send id of comment to delete method of controller -->
+      <%= button_to 'Delete', {:action => 'delete', :controller => 'comment', :id => comment.id}, method: :delete,
+data: {confirm: "Are you sure you want to delete this comment?"} %>
+    </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<br />
+<%= link_to 'Back', {:action => 'index', :controller => 'posts'} %>

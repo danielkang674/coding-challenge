@@ -1,0 +1,9 @@
+<h1>Comments</h1>
+
+<!-- define url as comment controller method -->
+<%= form_with url: comment_new_path do |p| %>
+  <%= p.text_area :body %>
+  <!-- hidden field post_id send as param -->
+  <%= hidden_field_tag :post_id, @post.id %>
+  <%= submit_tag "Post Comment" %>
+<% end %>

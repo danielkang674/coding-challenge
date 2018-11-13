@@ -9,6 +9,8 @@
   </head>
 
   <body>
+    <!-- must set method to get because buttons default to post -->
+    <p><%= button_to '+ New Post', {:action => 'new'}, method: :get %>
     <%= yield %>
   </body>
 </html>

@@ -1,1 +1,19 @@
 <!-- View for showing all `Post` -->
+
+<!-- Check if database has posts -->
+<% if @posts.blank? %>
+  <h1>There are no posts to show.</h1>
+<% else %>
+  <ul id="posts-list">
+  <!-- iterate over posts -->
+    <% @posts.each do |post| %>
+    <li>
+      <%= post.title %>
+      <!-- short preview of body -->
+      <%= post.body.truncate(50) %>
+      <!-- links to show view -->
+      <%= link_to post.comments.count, {:action => 'show', :id => post.id} %>
+    </li>
+    <% end %>
+  </ul>
+<% end %>

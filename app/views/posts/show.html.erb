@@ -1,1 +1,15 @@
 <!-- View for showing a single `Post` -->
+
+<h1><%= @post.title %></h1>
+<p><%= @post.body %></p>
+
+<!-- must set method to delete because buttons default to post -->
+<%= button_to 'Delete Post', {:action => 'destroy', :id => @post.id}, method: :delete,
+data: {confirm: "Are you sure you want to delete this post?"} %>
+
+<hr />
+
+<!-- Partial template -->
+<%= render "comment/new", locals: {post: @post} %>
+<!-- Sent post object as variable -->
+<%= render "comment/index", object: @post %>
